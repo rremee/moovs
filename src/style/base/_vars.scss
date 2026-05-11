@@ -1,3 +1,16 @@
+:root {
+    --c-bg-main: linear-gradient(140deg, #191b23 0%, #142a3c 100%);
+    --c-bg-nav: #16252E;
+    --c-white: #E9E2E2;
+    --c-bg-icon-nav: #535771;
+    --c-icon-nav: #5B9FF4;
+    --c-bg-searching: #17292E;
+    --c-bg-icon-searching: #0B2127;
+    --c-icon-slider: #777D7E;
+    --c-bg-detail-slide: rgba(44, 48, 50, 0.5);
+}
+
+
 // Breakpoints
 $laptopL: 1440px;
 $laptopM: 1200px;
