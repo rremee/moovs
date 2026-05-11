@@ -1,2 +1,7 @@
 @use "/src/style/base/null";
-@use "/src/style/base/vars";
+@use "/src/style/base/vars" as *;
+@use "/src/style/base/font";
+
+body {
+    font-family: $fontFamily;
+}
