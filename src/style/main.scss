@@ -4,4 +4,11 @@
 
 body {
     font-family: $fontFamily;
+    background: var(--c-bg-main);
+}
+
+.app-main {
+    display: grid;
+    grid-template-columns: 324px 1fr;
+    grid-template-rows: 100vh;
 }
