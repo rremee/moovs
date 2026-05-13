@@ -1,0 +1,22 @@
+@use "/src/style/base/vars" as *;
+
+.nav-item {
+    display: inline-flex;
+    span {
+        font-size: 24px;
+        color: var(--c-icon-nav);
+        background: var(--c-bg-icon-nav);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 44px;
+        height: 44px;
+        border-radius: 50%;
+    }
+    a {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        color: var(--c-white);
+    }
+}
