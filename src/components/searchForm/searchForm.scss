@@ -1,0 +1,26 @@
+@use "/src/style/base/vars" as *;
+
+.search-form {
+    position: relative;
+    &__input {
+        background: var(--c-bg-searching);
+        width: 100%;
+        padding: 12px 14px 12px 54px;
+        border-radius: 8px;
+        color: var(--c-white);
+        outline: none;
+    }
+    &__button {
+        position: absolute;
+        left: 0;
+        top: 50%;
+        transform: translateY(-50%);
+        background-color: var(--c-bg-icon-searching);
+        height: 100%;
+        width: 44px;
+        border-radius: 8px;
+        color: var(--c-icon-nav);
+        font-size: 24px;
+    }
+}
+
