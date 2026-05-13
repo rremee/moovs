@@ -1,0 +1,11 @@
+@use "/src/style/base/vars" as *;
+
+.sidebar {
+    background: var(--c-bg-nav);
+    height: 100vh;
+    padding: 36px 30px;
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+}
+
