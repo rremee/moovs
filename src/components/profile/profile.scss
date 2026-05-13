@@ -1,0 +1,17 @@
+@use "/src/style/base/vars" as *;
+
+.profile {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    &__avatar {
+        width: 48px;
+        height: 48px;
+        border-radius: 8px;
+        background-color: var(--c-icon-nav);
+    }
+    &__name {
+        font-weight: 600;
+        color: var(--c-white);
+    }
+}
