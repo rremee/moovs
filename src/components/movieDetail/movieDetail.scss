@@ -1,0 +1,12 @@
+@use "/src/style/base/vars" as *;
+
+.movie-detail {
+    display: inline-block;
+    border-radius: 12px;
+    padding: 10px;
+    font-weight: 600;
+    font-size: 14px;
+    text-align: center;
+    color: var(--c-white);
+    background-color: var(--c-bg-detail-slide);
+}
