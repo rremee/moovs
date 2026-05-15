@@ -3,6 +3,8 @@
 .sidebar {
     background: var(--c-bg-nav);
     height: 100vh;
+    position: sticky;
+    top: 0;
     padding: 36px 30px;
     display: flex;
     flex-direction: column;
