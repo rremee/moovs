@@ -1,0 +1,13 @@
+@use "/src/style/base/vars" as *;
+
+.news-home {
+    border: 2px solid var(--c-bg-icon-nav);
+    border-radius: 24px;
+    overflow: hidden;
+    padding: 12px 20px 0;
+    &__list {
+        display: flex;
+        flex-direction: column;
+        gap: 30px;
+    }
+}
