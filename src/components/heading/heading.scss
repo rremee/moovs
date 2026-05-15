@@ -1,0 +1,8 @@
+@use "/src/style/base/vars" as *;
+
+.heading {
+    font-weight: 700;
+    font-size: 30px;
+    color: var(--c-white);
+    margin-bottom: 24px;
+}
