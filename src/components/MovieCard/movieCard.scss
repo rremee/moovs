@@ -1,4 +1,5 @@
 @use "/src/style/base/vars" as *;
+@use "/src/style/base/mixins" as *;
 
 .movie-card {
     position: relative;
@@ -9,21 +10,15 @@
     grid-template-columns: 1fr auto;
     grid-template-rows: auto 1fr auto;
     &__img {
-        position: absolute;
         object-fit: cover;
-        inset: 0;
-        width: 100%;
-        height: 100%;
+        @include absolute-fill;
         z-index: -1;
         border-radius: 40px;
 
     }
     &::after {
         content: "";
-        position: absolute;
-        inset: 0;
-        width: 100%;
-        height: 100%;
+        @include absolute-fill;
         background-color: var(--c-bg-overlay-slider);
         z-index: -1;
         border-radius: 40px;
@@ -37,12 +32,12 @@
     }
     &__title {
         font-weight: 700;
-        font-size: 40px;
+        font-size: $fs-2xl;
         color: var(--c-white);
     }
     &__descr {
         font-weight: 400;
-        font-size: 16px;
+        font-size: $fs-sm;
         line-height: 160%;
         color: var(--c-white);
         max-width: 494px;
@@ -57,10 +52,8 @@
             height: 24px;
             border-radius: 50%;
             border: 1px solid var(--c-icon-slider);
-            font-size: 14px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
+            font-size: $fs-xs;
+            @include flex-center;
             color: var(--c-icon-slider);
         }
     }

@@ -1,6 +1,7 @@
 @use "/src/style/base/null";
 @use "/src/style/base/vars" as *;
 @use "/src/style/base/font";
+@use "/src/style/base/mixins";
 
 body {
     font-family: $fontFamily;

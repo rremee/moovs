@@ -1,14 +1,13 @@
 @use "/src/style/base/vars" as *;
+@use "/src/style/base/mixins" as *;
 
 .nav-item {
     display: inline-flex;
     span {
-        font-size: 24px;
+        font-size: $fs-lg;
         color: var(--c-icon-nav);
         background: var(--c-bg-icon-nav);
-        display: flex;
-        align-items: center;
-        justify-content: center;
+        @include flex-center;
         width: 44px;
         height: 44px;
         border-radius: 50%;

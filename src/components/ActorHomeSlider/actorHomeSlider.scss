@@ -6,7 +6,7 @@
     gap: 12px;
     &__name {
         font-weight: 500;
-        font-size: 14px;
+        font-size: $fs-xs;
         text-align: right;
         color: var(--c-white);
     }

@@ -14,6 +14,15 @@
 
 $fontFamily: 'Gilroy', sans-serif;
 
+// Typography
+$fs-2xs: clamp(0.625rem, 1.2vw, 0.75rem); // 10 - 12px
+$fs-xs: clamp(0.75rem, 1.2vw, 0.875rem); // 12 - 14px
+$fs-sm: clamp(0.875rem, 1.4vw, 1rem); // 14 - 16px
+$fs-md: clamp(1.25rem, 2.2vw, 1.375rem); // 20 - 22px
+$fs-lg: clamp(1.375rem, 2.4vw, 1.5rem); // 22 - 24px
+$fs-xl: clamp(1.5rem, 2vw, 1.875rem); // 24 - 30px (heading)
+$fs-2xl: clamp(2rem, 3.2vw, 2.5rem); // 32 - 40px (movie title)
+
 
 // Breakpoints
 $laptopL: 1440px;
