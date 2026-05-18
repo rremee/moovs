@@ -3,7 +3,7 @@
 .actor-home-slider {
     display: flex;
     align-items: center;
-    gap: 12px;
+    gap: $gutter-xs;
     &__name {
         font-weight: 500;
         font-size: $fs-xs;

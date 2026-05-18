@@ -3,7 +3,7 @@
 .news-home-card {
     display: flex;
     flex-direction: column;
-    gap: 16px;
+    gap: $gutter-md;
     &__image {
         width: 100%;
         position: relative;

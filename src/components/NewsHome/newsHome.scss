@@ -8,6 +8,6 @@
     &__list {
         display: flex;
         flex-direction: column;
-        gap: 30px;
+        gap: $gutter-xl;
     }
 }

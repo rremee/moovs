@@ -4,7 +4,7 @@
 .upcoming-card {
     display: flex;
     flex-direction: column;
-    gap: 10px;
+    gap: $gutter-xs;
     &__image {
         aspect-ratio: 272 / 200;
         width: 100%;
@@ -29,7 +29,7 @@
     &__date {
         display: flex;
         align-items: center;
-        gap: 4px;
+        gap: $gutter-2xs;
         span {
             color: var(--c-icon-nav);
             font-size: $fs-lg;

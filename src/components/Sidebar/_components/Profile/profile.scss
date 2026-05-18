@@ -3,7 +3,7 @@
 .profile {
     display: flex;
     align-items: center;
-    gap: 14px;
+    gap: $gutter-xs;
     &__avatar {
         width: 48px;
         height: 48px;

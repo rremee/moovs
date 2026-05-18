@@ -15,7 +15,7 @@
     a {
         display: flex;
         align-items: center;
-        gap: 10px;
+        gap: $gutter-xs;
         color: var(--c-white);
     }
 }

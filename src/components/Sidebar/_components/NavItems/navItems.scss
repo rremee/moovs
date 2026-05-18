@@ -1,7 +1,9 @@
+@use "/src/style/base/vars" as *;
+
 .nav {
     &__list {
         display: flex;
         flex-direction: column;
-        gap: 22px;
+        gap: $gutter-lg;
     }
 }
