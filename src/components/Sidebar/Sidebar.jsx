@@ -1,6 +1,6 @@
-import Profile from "../profile/Profile.jsx";
-import SearchForm from "../searchForm/SearchForm.jsx";
-import NavItems from "../navItems/NavItems.jsx";
+import Profile from "./_components/Profile/Profile.jsx";
+import SearchForm from "./_components/SearchForm/SearchForm.jsx";
+import NavItems from "./_components/NavItems/NavItems.jsx";
 import logo from "../../assets/logo.svg"
 import './sidebar.scss';
 

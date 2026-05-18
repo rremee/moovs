@@ -2,7 +2,7 @@ import './profile.scss'
 
 const Profile = () => {
 	return (
-		<a href="/" className="profile">
+		<a href="/public" className="profile">
 			<div className="profile__avatar">
 
 			</div>

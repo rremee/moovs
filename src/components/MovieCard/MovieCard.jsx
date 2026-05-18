@@ -1,6 +1,6 @@
 import {movieDetails, actorsSlider} from "../../constants/script.js";
-import MovieDetail from "../movieDetail/MovieDetail.jsx";
-import ActorHomeSlider from "../actorHomeSlider/ActorHomeSlider.jsx";
+import MovieDetail from "../MovieDetail/MovieDetail.jsx";
+import ActorHomeSlider from "../ActorHomeSlider/ActorHomeSlider.jsx";
 import './movieCard.scss';
 
 const MovieCard = () => {

@@ -1,5 +1,5 @@
-import {menuItems} from "../../constants/script.js";
-import NavItem from "../navItem/NavItem.jsx";
+import {menuItems} from "../../../../constants/script.js";
+import NavItem from "../NavItem/NavItem.jsx";
 import './navItems.scss'
 
 const NavItems = () => {

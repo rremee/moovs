@@ -1,6 +1,6 @@
-import Sidebar from "./components/sidebar/Sidebar.jsx";
-import MovieCard from "./components/movieCard/MovieCard.jsx";
-import Heading from "./components/heading/Heading.jsx";
+import Sidebar from "./components/Sidebar/Sidebar.jsx";
+import MovieCard from "./components/MovieCard/MovieCard.jsx";
+import Heading from "./components/Heading/Heading.jsx";
 import UpcomingList from "./components/UpcomingList/UpcomingList.jsx";
 import NewsHome from "./components/NewsHome/NewsHome.jsx";
 
