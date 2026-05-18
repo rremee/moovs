@@ -2,7 +2,7 @@
 
 .news-home {
     border: 2px solid var(--c-bg-icon-nav);
-    border-radius: 24px;
+    border-radius: $radius-lg;
     overflow: hidden;
     padding: 12px 20px 0;
     &__list {

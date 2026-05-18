@@ -13,7 +13,7 @@
         object-fit: cover;
         @include absolute-fill;
         z-index: -1;
-        border-radius: 40px;
+        border-radius: $radius-xl;
 
     }
     &::after {
@@ -21,7 +21,7 @@
         @include absolute-fill;
         background-color: var(--c-bg-overlay-slider);
         z-index: -1;
-        border-radius: 40px;
+        border-radius: $radius-xl;
     }
     &__content {
         grid-area: 3 / 1 / 4 / 2;
@@ -50,7 +50,7 @@
         a {
             width: 24px;
             height: 24px;
-            border-radius: 50%;
+            border-radius: $radius-full;
             border: 1px solid var(--c-icon-slider);
             font-size: $fs-xs;
             @include flex-center;

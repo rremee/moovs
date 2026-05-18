@@ -10,7 +10,7 @@
         @include flex-center;
         width: 44px;
         height: 44px;
-        border-radius: 50%;
+        border-radius: $radius-full;
     }
     a {
         display: flex;

@@ -6,7 +6,7 @@
         background: var(--c-bg-searching);
         width: 100%;
         padding: 12px 14px 12px 54px;
-        border-radius: 8px;
+        border-radius: $radius-sm;
         color: var(--c-white);
         outline: none;
     }
@@ -18,7 +18,7 @@
         background-color: var(--c-bg-icon-searching);
         height: 100%;
         width: 44px;
-        border-radius: 8px;
+        border-radius: $radius-sm;
         color: var(--c-icon-nav);
         font-size: $fs-lg;
     }

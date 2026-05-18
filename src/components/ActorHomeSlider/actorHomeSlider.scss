@@ -11,11 +11,11 @@
         color: var(--c-white);
     }
     &__image {
-        border-radius: 4px;
         width: clamp(32px, 3vw, 42px);
         aspect-ratio: 42 / 60;
         position: relative;
         img {
+            border-radius: $radius-xs;
             object-fit: cover;
         }
         &::after {

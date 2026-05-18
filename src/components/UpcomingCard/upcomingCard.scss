@@ -7,11 +7,10 @@
     gap: 10px;
     &__image {
         aspect-ratio: 272 / 200;
-        border-radius: 24px;
         width: 100%;
         position: relative;
         img {
-            border-radius: 24px;
+            border-radius: $radius-lg;
             @include absolute-fill;
             object-fit: cover;
         }

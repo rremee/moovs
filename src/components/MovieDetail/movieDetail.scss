@@ -2,7 +2,7 @@
 
 .movie-detail {
     display: inline-block;
-    border-radius: 12px;
+    border-radius: $radius-md;
     padding: 10px;
     font-weight: 600;
     font-size: $fs-xs;
