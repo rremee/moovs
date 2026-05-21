@@ -4,17 +4,20 @@
 .actor-home-slider {
     display: flex;
     align-items: center;
+    justify-content: flex-end;
     gap: $gutter-xs;
     &__name {
         font-weight: 500;
         font-size: $fs-xs;
         text-align: right;
         color: var(--c-white);
+        white-space: nowrap;
     }
     &__image {
         width: clamp(32px, 3vw, 42px);
         aspect-ratio: 42 / 60;
         position: relative;
+        flex-shrink: 0;
         img {
             border-radius: $radius-xs;
             object-fit: cover;
