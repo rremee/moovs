@@ -1,8 +1,9 @@
 import Sidebar from "./components/Sidebar/Sidebar.jsx";
-import MovieCard from "./components/MovieCard/MovieCard.jsx";
 import Heading from "./components/Heading/Heading.jsx";
 import UpcomingList from "./components/UpcomingList/UpcomingList.jsx";
 import NewsHome from "./components/NewsHome/NewsHome.jsx";
+import HomeSlider from "./components/HomeSlider/HomeSlider.jsx";
+import {movieSlides} from "./constants/script.js";
 
 function App() {
 
@@ -12,7 +13,7 @@ function App() {
         <main className="main-content">
             <section className={'home-slider'}>
                 <Heading name={'Now Playing'} />
-                <MovieCard/>
+                <HomeSlider movies={movieSlides} />
             </section>
             <div className="news-wrapper">
                 <aside className={'news'}>
