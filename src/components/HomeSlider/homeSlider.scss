@@ -1,0 +1,106 @@
+@use "/src/style/base/vars" as *;
+@use "/src/style/base/mixins" as *;
+
+.movie-slider {
+    display: flex;
+    flex-direction: column;
+    gap: $gutter-lg;
+    width: 100%;
+    &__wrapper {
+        position: relative;
+        width: 100%;
+        overflow: hidden;
+        border-radius: $radius-xl;
+        perspective: 1200px;
+        perspective-origin: 50% 50%;
+    }
+    &__card {
+        position: absolute;
+        inset: 0;
+        transform-origin: center center;
+        transform-style: preserve-3d;
+
+        opacity: 0;
+        visibility: hidden;
+        pointer-events: none;
+        z-index: 0;
+
+        transform: scale(0.98) translateZ(-120px);
+        filter: blur(4px) brightness(0.7);
+        transition:
+                transform 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94),
+                opacity 0.6s ease,
+                filter 0.7s ease,
+                visibility 0.7s step-end;
+        will-change: transform, opacity, filter;
+
+        &--active {
+            position: relative;
+            opacity: 1;
+            visibility: visible;
+            pointer-events: auto;
+            z-index: 50;
+            transform: scale(1) translateZ(0);
+            filter: blur(0) brightness(1);
+            transition:
+                    transform 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94),
+                    opacity 0.65s ease,
+                    filter 0.7s ease,
+                    visibility 0s;
+        }
+    }
+    &__navigation {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: $gutter-xs;
+    }
+    &__dots {
+        display: flex;
+        flex: 1;
+        justify-content: space-between;
+        gap: $gutter-2xs;
+    }
+    &__btn {
+        @include flex-center;
+        border-radius: $radius-full;
+        border: none;
+        outline: none;
+        cursor: pointer;
+        span {
+            color: var(--c-white);
+            font-size: $fs-md;
+        }
+        &--prev {
+            transform: rotate(90deg);
+        }
+        &--next {
+            transform: rotate(-90deg);
+        }
+    }
+    &__dot {
+        flex: 1;
+        height: 2px;
+        background-color: var(--c-icon-slider);
+        cursor: pointer;
+        position: relative;
+        overflow: hidden;
+        &::after {
+            content: "";
+            position: absolute;
+            left: 0;
+            top: 0;
+            height: 100%;
+            width: 0;
+            background-color: var(--c-white);
+        }
+        &--active::after {
+            animation: fillDot var(--slide-duration) linear forwards;
+        }
+    }
+}
+
+@keyframes fillDot {
+    0% {width: 0;}
+    100% {width: 100%;}
+}
