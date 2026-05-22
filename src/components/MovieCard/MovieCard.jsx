@@ -1,6 +1,7 @@
-import {movieDetails, actorsSlider} from "../../constants/script.js";
+import {useEffect, useState} from "react";
 import MovieDetail from "../MovieDetail/MovieDetail.jsx";
 import ActorHomeSlider from "../ActorHomeSlider/ActorHomeSlider.jsx";
+import useTMDBService from "../../services/TMDBService.js";
 import './movieCard.scss';
 
 const truncText = (text, maxLength) => {
@@ -11,12 +12,29 @@ const truncText = (text, maxLength) => {
 }
 
 const MovieCard = ({movie, isActive}) => {
-	const {name, descr} = movie;
+
+	const [actors, setActors] = useState([]);
+	const [details, setDetails] = useState([]);
+	if (!movie) return null;
+	const {id, title, overview, image} = movie;
+	const {getMoviesPlayingDetails} = useTMDBService();
+
+	useEffect(() => {
+		if (id) {
+			getMoviesPlayingDetails(id)
+				.then(data => {
+					setActors(data.actors);
+					setDetails(data.detailsList);
+				})
+				.catch(err => console.error("Error movie details loading:", err));
+		}
+	}, [id])
+
 	return (
 		<div className={`movie-card ${isActive ? 'movie-card--active' : ''}`}>
-			<img src="https://www.arthipo.com/image/cache/catalog/poster/movie/1555-2059/pfilm1635-fury-movie-poster-986x1100.webp" alt="Poster" className="movie-card__img"/>
+			<img src={image} alt={title} className="movie-card__img"/>
 			<div className="movie-card__details">
-				{movieDetails.map(movie => (
+				{details.map(movie => (
 					<MovieDetail
 						key={movie.id}
 						name={movie.name}
@@ -24,7 +42,7 @@ const MovieCard = ({movie, isActive}) => {
 				))}
 			</div>
 			<div className="movie-card__actors">
-				{actorsSlider.map(actor => (
+				{actors.map(actor => (
 					<ActorHomeSlider
 						key={actor.id}
 						name={actor.name}
@@ -34,10 +52,10 @@ const MovieCard = ({movie, isActive}) => {
 			</div>
 			<div className="movie-card__content">
 				<h3 className="movie-card__title">
-					{name}
+					{title}
 				</h3>
 				<p className="movie-card__descr">
-					{truncText(descr, 160)}
+					{truncText(overview, 160)}
 				</p>
 				<div className="movie-card__actions">
 					<ul>

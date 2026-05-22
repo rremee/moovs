@@ -1,13 +1,17 @@
 import {useState, useEffect, useCallback, useRef} from 'react';
 import MovieCard from "../MovieCard/MovieCard.jsx";
+import useTMDBService from "../../services/TMDBService.js";
 import './homeSlider.scss';
 
 const AUTO_SLIDE = 10000;
 
-const HomeSlider = ({movies}) => {
+const HomeSlider = () => {
+	const [movies, setMovies] = useState([]);
 	const [activeMovieIdx, setActiveMovieIdx] = useState(0);
 	const timerRef = useRef(null);
 	const total = movies.length;
+
+	const {getMoviesNowPlaying} = useTMDBService();
 
 	const startTimer = useCallback(() => {
 		clearInterval(timerRef.current);
@@ -15,6 +19,14 @@ const HomeSlider = ({movies}) => {
 			setActiveMovieIdx((prev) => (prev + 1) % total);
 		}, AUTO_SLIDE);
 	},[total]);
+
+	useEffect(() => {
+		getMoviesNowPlaying()
+			.then(data => {
+			setMovies(data.slice(0, 10));
+		})
+			.catch(err => console.error("Error movie loading:", err));
+	}, [])
 
 	useEffect(() => {
 		if (total < 1) return;
