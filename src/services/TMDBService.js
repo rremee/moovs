@@ -21,6 +21,21 @@ const useTMDBService = () => {
 		return res.results.map(_transformMovie);
 	}
 
+	const getMoviesUpcoming = async () => {
+
+		const today = new Date();
+		const yyyy = today.getFullYear();
+		const mm = String(today.getMonth() + 1).padStart(2, '0');
+		const dd = String(today.getDate()).padStart(2, '0');
+		const formattedToday = `${yyyy}-${mm}-${dd}`;
+
+		const res = await request(
+			`${_apiBase}discover/movie?api_key=${_apiKey}&primary_release_date.gte=${formattedToday}&sort_by=popularity.desc&with_runtime.gte=60`
+		);
+
+		return res.results.map(_transformUpcomingMovie);
+	}
+
 	const getMoviesPlayingDetails = async (id) => {
 		const res = await request(`${_apiBase}movie/${id}?api_key=${_apiKey}&append_to_response=release_dates,credits`);
 
@@ -87,8 +102,21 @@ const useTMDBService = () => {
 		}
 	}
 
+	const _transformUpcomingMovie = (movie) => {
+		return {
+			id: movie.id,
+			title: movie.title,
+			date: new Date(movie.release_date).toLocaleDateString('en-US', {
+				day: 'numeric',
+				month: 'short',
+				year: 'numeric'
+			}),
+			imageSrc: movie['backdrop_path'] ? `${_imageBase}${movie["backdrop_path"]}` : `${_imageBase}${movie["poster_path"]}`
+		}
+	}
+
 	return {
-		getMoviesNowPlaying, getMoviesPlayingDetails
+		getMoviesNowPlaying, getMoviesPlayingDetails, getMoviesUpcoming
 	}
 };
 

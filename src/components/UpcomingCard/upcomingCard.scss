@@ -30,6 +30,7 @@
         display: flex;
         align-items: center;
         gap: $gutter-2xs;
+        margin-top: auto;
         span {
             color: var(--c-icon-nav);
             font-size: $fs-lg;
