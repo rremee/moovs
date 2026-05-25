@@ -16,10 +16,16 @@
             object-fit: cover;
         }
     }
-    &__title {
-        font-weight: 700;
-        font-size: $fs-md;
+    &__content {
         line-height: 160%;
         color: var(--c-white);
+    }
+    &__title {
+        font-weight: 700;
+        font-size: $fs-sm;
+        margin-bottom: .3rem;
+    }
+    &__description {
+        font-size: $fs-2xs;
     }
 }

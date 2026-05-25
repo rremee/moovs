@@ -5,9 +5,27 @@
     border-radius: $radius-lg;
     overflow: hidden;
     padding: 12px 20px 0;
+    &__track {
+        display: flex;
+        flex-direction: column;
+        animation: marquee 60s linear infinite;
+        &:hover {
+            animation-play-state: paused;
+        }
+    }
     &__list {
         display: flex;
         flex-direction: column;
         gap: $gutter-xl;
+        padding-bottom: $gutter-xl;
+    }
+}
+
+@keyframes marquee {
+    0% {
+        transform: translateY(0);
+    }
+    100% {
+        transform: translateY(-50%);
     }
 }

@@ -1,14 +1,30 @@
 import './newsHomeCard.scss'
 
-const NewsHomeCard = ({image, title}) => {
+const NewsHomeCard = ({image, title, url, description, placeholderImage}) => {
+
+	const handleError = (e) => {
+		if (e.target.src !== placeholderImage) {
+			e.target.src = placeholderImage;
+		}
+	};
+
 	return (
-		<a href='/' className={'news-home-card'}>
+		<a href={url} target="_blank" rel="noopener noreferrer" className={'news-home-card'}>
 			<div className={'news-home-card__image'}>
-				<img src={image} alt="News Image"/>
+				<img
+					src={image ? image : placeholderImage}
+					alt={title}
+					onError={handleError}
+				/>
 			</div>
-			<h4 className={'news-home-card__title'}>
+			<span className="news-home-card__content">
+				<h4 className={'news-home-card__title'}>
 				{title}
-			</h4>
+				</h4>
+				<p className={'news-home-card__description'}>
+					{description}
+				</p>
+			</span>
 		</a>
 	);
 };
