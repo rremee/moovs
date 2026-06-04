@@ -18,7 +18,65 @@ const useTMDBService = () => {
 
 	const getMoviesNowPlaying = async () => {
 		const res = await request(`${_apiBase}movie/now_playing?api_key=${_apiKey}`);
-		return res.results.map(_transformMovie);
+		const movies = res.results.map(_transformMovie);
+
+		return await Promise.all(
+			movies.map(async (movie) => {
+				try {
+					const detailsRes = await request(`${_apiBase}movie/${movie.id}?api_key=${_apiKey}&append_to_response=release_dates,credits`);
+
+					const actors = detailsRes.credits?.cast
+						.filter(member => member['known_for_department'] === 'Acting')
+						.sort((a,b) => b.popularity - a.popularity)
+						.slice(0, 3)
+						.map(_transformActor);
+
+					const genres = detailsRes.genres?.slice(0,2).map(genre => ({
+						id: `genre-${genre.id}-${movie.id}`,
+						name: genre.name
+					})) || [];
+
+					const runtime = detailsRes.runtime ? {
+						id: `runtime-${movie.id}`,
+						name: `${Math.floor(detailsRes.runtime / 60) > 0 ? `${Math.floor(detailsRes.runtime / 60)}h ` : ''}${detailsRes.runtime % 60}m`
+					} : null;
+
+					let releaseDate = null;
+					if (detailsRes.release_date) {
+						const date = new Date(detailsRes.release_date).toLocaleDateString('en-US', {
+							day: 'numeric',
+							month: 'short',
+							year: 'numeric'
+						});
+						releaseDate = { id: `date-${movie.id}`, name: date };
+					}
+
+					let ageRating = null;
+					const ageRelease = detailsRes.release_dates?.results.find(item => item.iso_3166_1 === 'US');
+					const ageCertification = ageRelease?.release_dates?.find(d => d.certification && d.certification !== "")?.certification;
+					if (ageCertification) {
+						ageRating = { id: `age-${movie.id}`, name: ageCertification };
+					}
+
+					const detailsList = [
+						runtime,
+						...genres,
+						ageRating,
+						releaseDate
+					].filter(Boolean);
+
+					return {
+						...movie,
+						actors,
+						detailsList
+					};
+
+				} catch (err) {
+					console.log(`Error fetching details for movie ${movie.id}: ${err}`);
+					return {...movie, actors: [], detailsList: []};
+				}
+			})
+		)
 	}
 
 	const getMoviesUpcoming = async () => {
@@ -34,55 +92,6 @@ const useTMDBService = () => {
 		);
 
 		return res.results.map(_transformUpcomingMovie);
-	}
-
-	const getMoviesPlayingDetails = async (id) => {
-		const res = await request(`${_apiBase}movie/${id}?api_key=${_apiKey}&append_to_response=release_dates,credits`);
-
-		const actors = res.credits?.cast
-			.filter(member => member['known_for_department'] === 'Acting')
-			.sort((a,b) => b.popularity - a.popularity)
-			.slice(0, 3)
-			.map(_transformActor);
-
-		const genres = res.genres?.slice(0,2).map(genre => ({
-			id: `genre-${genre.id}-${id}`,
-			name: genre.name
-		})) || [];
-
-		const runtime = res.runtime ? {
-			id: `runtime-${id}`,
-			name: `${Math.floor(res.runtime / 60) > 0 ? `${Math.floor(res.runtime / 60)}h ` : ''}${res.runtime % 60}m`
-		} : null;
-
-		let releaseDate = null;
-		if (res.release_date) {
-			const date = new Date(res.release_date).toLocaleDateString('en-US', {
-				day: 'numeric',
-				month: 'short',
-				year: 'numeric'
-			});
-			releaseDate = { id: `date-${id}`, name: date };
-		}
-
-		let ageRating = null;
-		const ageRelease = res.release_dates?.results.find(item => item.iso_3166_1 === 'US');
-		const ageCertification = ageRelease?.release_dates?.find(d => d.certification && d.certification !== "")?.certification;
-		if (ageCertification) {
-			ageRating = { id: `age-${id}`, name: ageCertification };
-		}
-
-		const detailsList = [
-			runtime,
-			...genres,
-			ageRating,
-			releaseDate
-		].filter(Boolean);
-
-		return {
-			actors,
-			detailsList
-		}
 	}
 
 	const _transformMovie = (movie) => {
@@ -116,7 +125,7 @@ const useTMDBService = () => {
 	}
 
 	return {
-		getMoviesNowPlaying, getMoviesPlayingDetails, getMoviesUpcoming
+		getMoviesNowPlaying, getMoviesUpcoming
 	}
 };
 
