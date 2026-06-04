@@ -2,11 +2,17 @@
 @use "/src/style/base/vars" as *;
 @use "/src/style/base/font";
 @use "/src/style/base/mixins";
+@use "/src/style/ui/skeleton";
 
 body {
     font-family: $fontFamily;
     background: var(--c-bg-main);
     background-attachment: fixed;
+}
+
+.disabled {
+    pointer-events: none;
+    user-select: none;
 }
 
 .app-main {
