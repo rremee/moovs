@@ -1,0 +1,34 @@
+@keyframes react-loading-skeleton {
+    0% {
+        background-position: 200% 0;
+    }
+    100% {
+        background-position: -200% 0;
+    }
+}
+
+.react-loading-skeleton {
+    background: linear-gradient(90deg, rgba(255,255,255,0.05) 25%, rgba(255,255,255,0.1) 50%, rgba(255,255,255,0.05) 75%);
+    background-size: 200% 100%;
+
+    animation: react-loading-skeleton 2s infinite linear;
+
+    width: 100%;
+    border-radius: 6px;
+    display: inline-flex;
+    line-height: 1;
+    position: relative;
+    user-select: none;
+    overflow: hidden;
+}
+
+.react-loading-skeleton::after {
+    display: none !important;
+}
+
+@media (prefers-reduced-motion) {
+    .react-loading-skeleton {
+        animation: none;
+        background: rgba(255, 255, 255, 0.05);
+    }
+}
