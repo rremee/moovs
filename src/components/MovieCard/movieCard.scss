@@ -52,6 +52,7 @@
         font-weight: 700;
         font-size: $fs-2xl;
         color: var(--c-white);
+        max-width: 90%;
     }
     &__descr {
         font-weight: 400;
@@ -89,5 +90,11 @@
         grid-area: 1 / 2 / 4 / 3;
         align-self: center;
         justify-self: end;
+        &--skeleton {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            justify-content: flex-end;
+        }
     }
 }
