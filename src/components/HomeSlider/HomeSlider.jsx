@@ -1,13 +1,18 @@
 import {useState, useEffect, useCallback, useRef} from 'react';
 import MovieCard from "../MovieCard/MovieCard.jsx";
+import ErrorMessage from "../ErrorMessage/ErrorMessage.jsx";
 import useTMDBService from "../../services/TMDBService.js";
 import './homeSlider.scss';
 
 const AUTO_SLIDE = 10000;
+const COUNT_SLIDE = 10;
 
 const HomeSlider = () => {
 	const [movies, setMovies] = useState([]);
 	const [activeMovieIdx, setActiveMovieIdx] = useState(0);
+	const [loading, setLoading] = useState(true);
+	const [error, setError] = useState(false);
+
 	const timerRef = useRef(null);
 	const total = movies.length;
 
@@ -21,11 +26,18 @@ const HomeSlider = () => {
 	},[total]);
 
 	useEffect(() => {
+		setLoading(true);
+		setError(false);
 		getMoviesNowPlaying()
 			.then(data => {
-			setMovies(data.slice(0, 10));
+				setMovies(data.slice(0, COUNT_SLIDE));
+				setLoading(false);
 		})
-			.catch(err => console.error("Error movie loading:", err));
+			.catch(err => {
+				console.error("Error movie loading:", err);
+				setError(true);
+				setLoading(false);
+			});
 	}, [])
 
 	useEffect(() => {
@@ -59,20 +71,34 @@ const HomeSlider = () => {
 		/>
 	)) : null;
 
+	if (error) return <ErrorMessage />;
+
 	return (
 		<div className={'movie-slider'}>
 			<div className="movie-slider__wrapper">
-				{movies.map((movie, i) => {
-					const isActive = i === activeMovieIdx;
-					return (
-						<div
-							key={movie.id ?? i}
-							className={`movie-slider__card ${isActive ? 'movie-slider__card--active' : 'movie-slider__card--hidden'}`}
-						>
-							<MovieCard movie={movie} isActive={isActive} />
-						</div>
-					)
-				})}
+				{loading
+					? Array.from({length: COUNT_SLIDE}, (_,i) => {
+						const isActive = i === 0;
+						return (
+							<div
+								key={i}
+								className={`movie-slider__card ${isActive ? 'movie-slider__card--active' : 'movie-slider__card--hidden'}`}
+							>
+								<MovieCard isLoading isActive={isActive}/>
+							</div>
+						)
+					})
+					: movies.map((movie, i) => {
+						const isActive = i === activeMovieIdx;
+						return (
+							<div
+								key={movie.id ?? i}
+								className={`movie-slider__card ${isActive ? 'movie-slider__card--active' : 'movie-slider__card--hidden'}`}
+							>
+								<MovieCard movie={movie} isActive={isActive} />
+							</div>
+						)
+					})}
 			</div>
 			{ dots && (
 				<div className={'movie-slider__navigation'}>
