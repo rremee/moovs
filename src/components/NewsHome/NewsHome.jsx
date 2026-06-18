@@ -1,4 +1,4 @@
-import {useEffect, useState} from "react";
+import {useEffect, useState, useRef} from "react";
 import useNewsService, {_placeholderImage} from "../../services/NewsService.js";
 import NewsHomeCard from "../NewsHomeCard/NewsHomeCard.jsx";
 import './newsHome.scss'
@@ -13,7 +13,11 @@ const NewsHome = () => {
 
 	const {getMovieNews} = useNewsService();
 
+	const isFetched = useRef(false);
+
 	useEffect(() => {
+		if (isFetched.current) return;
+		isFetched.current = true;
 		setLoading(true);
 		setError(false);
 		setMarquee(false);
