@@ -1,6 +1,7 @@
+import Skeleton from 'react-loading-skeleton';
 import './newsHomeCard.scss'
 
-const NewsHomeCard = ({image, title, url, description, placeholderImage}) => {
+const NewsHomeCard = ({image, title, url, description, placeholderImage, isLoading}) => {
 
 	const handleError = (e) => {
 		if (e.target.src !== placeholderImage) {
@@ -11,18 +12,25 @@ const NewsHomeCard = ({image, title, url, description, placeholderImage}) => {
 	return (
 		<a href={url} target="_blank" rel="noopener noreferrer" className={'news-home-card'}>
 			<div className={'news-home-card__image'}>
-				<img
-					src={image ? image : placeholderImage}
-					alt={title}
-					onError={handleError}
-				/>
+				{
+					isLoading
+					? <Skeleton height='100%' />
+					:
+						<>
+							<img
+								src={image ? image : placeholderImage}
+								alt={title}
+								onError={handleError}
+							/>
+						</>
+				}
 			</div>
 			<span className="news-home-card__content">
 				<h4 className={'news-home-card__title'}>
-				{title}
+				{isLoading ? <Skeleton width={'84%'} /> : title}
 				</h4>
 				<p className={'news-home-card__description'}>
-					{description}
+					{isLoading ? <Skeleton count={3} width={'92%'} /> : description}
 				</p>
 			</span>
 		</a>
