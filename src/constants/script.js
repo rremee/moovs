@@ -8,4 +8,11 @@ const menuItems = [
 	{id:'nav-item-7', name: 'Favorites', icon: 'icon-favorite', path: '/'},
 ]
 
-export {menuItems};
+const truncText = (text, maxLength) => {
+	if (!text) return '';
+	if (text.length <= maxLength) return text;
+	const lastSpace = text.lastIndexOf(" ", maxLength);
+	return text.slice(0, lastSpace > 0 ? lastSpace : maxLength) + '...';
+}
+
+export {menuItems, truncText};

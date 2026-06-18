@@ -1,14 +1,8 @@
 import MovieDetail from "../MovieDetail/MovieDetail.jsx";
 import Skeleton from 'react-loading-skeleton';
 import ActorHomeSlider from "../ActorHomeSlider/ActorHomeSlider.jsx";
+import {truncText} from "../../constants/script.js";
 import './movieCard.scss';
-
-const truncText = (text, maxLength) => {
-	if (!text) return '';
-	if (text.length <= maxLength) return text;
-	const lastSpace = text.lastIndexOf(" ", maxLength);
-	return text.slice(0, lastSpace > 0 ? lastSpace : maxLength) + '...';
-}
 
 const MovieCard = ({movie, isActive, isLoading}) => {
 

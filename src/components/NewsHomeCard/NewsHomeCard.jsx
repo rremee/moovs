@@ -1,4 +1,5 @@
 import Skeleton from 'react-loading-skeleton';
+import {truncText} from "../../constants/script.js";
 import './newsHomeCard.scss'
 
 const NewsHomeCard = ({image, title, url, description, placeholderImage, isLoading}) => {
@@ -30,7 +31,7 @@ const NewsHomeCard = ({image, title, url, description, placeholderImage, isLoadi
 				{isLoading ? <Skeleton width={'84%'} /> : title}
 				</h4>
 				<p className={'news-home-card__description'}>
-					{isLoading ? <Skeleton count={3} width={'92%'} /> : description}
+					{isLoading ? <Skeleton count={3} width={'92%'} /> : truncText(description, 220)}
 				</p>
 			</span>
 		</a>
