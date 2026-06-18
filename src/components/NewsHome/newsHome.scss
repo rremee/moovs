@@ -8,9 +8,11 @@
     &__track {
         display: flex;
         flex-direction: column;
-        animation: marquee 60s linear infinite;
-        &:hover {
-            animation-play-state: paused;
+        &--animated {
+            animation: marquee 60s linear infinite;
+            &:hover {
+                animation-play-state: paused;
+            }
         }
     }
     &__list {
