@@ -21,32 +21,3 @@ body {
     min-height: 100vh;
     gap: clamp(1.25rem, 4.5vw, 5.625rem);
 }
-
-.main-content {
-    display: grid;
-    grid-template-columns: 1fr clamp(280px, 30%, 472px);
-    gap: clamp(1.875rem, 4vw, 3.875rem) clamp(1rem, 2vw, 1.875rem);
-    padding: clamp(16px, 2vw, 30px) clamp(16px, 2vw, 30px) clamp(30px, 4vw, 66px) 0;
-    align-content: start;
-}
-
-.home-slider {
-    display: flex;
-    flex-direction: column;
-}
-
-.news-wrapper {
-    position: relative;
-    min-height: 0;
-}
-
-.news {
-    position: absolute;
-    inset: 0;
-    display: flex;
-    flex-direction: column;
-}
-
-.upcoming {
-    grid-column: 1 / 3;
-}

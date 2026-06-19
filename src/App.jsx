@@ -7,10 +7,9 @@ function App() {
   return (
     <div className={'app-main'}>
         <Sidebar/>
-        <main className="main-content">
+        <main>
             <Routes>
                 <Route path="/" element={<Home/>} />
-                <Route path="/movies" element={<Movies/>} />
             </Routes>
         </main>
     </div>

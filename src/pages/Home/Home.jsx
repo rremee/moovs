@@ -3,10 +3,11 @@ import Heading from "../../components/Heading/Heading.jsx";
 import UpcomingList from "../../components/UpcomingList/UpcomingList.jsx";
 import NewsHome from "../../components/NewsHome/NewsHome.jsx";
 import HomeSlider from "../../components/HomeSlider/HomeSlider.jsx";
+import './home.scss';
 
 const Home = () => {
 	return (
-		<>
+		<div className={'home-content'}>
 			<section className={'home-slider'}>
 				<Heading name={'Now Playing'} />
 				<HomeSlider/>
@@ -21,7 +22,7 @@ const Home = () => {
 				<Heading name={'Upcoming releases'} />
 				<UpcomingList/>
 			</section>
-		</>
+		</div>
 	);
 };
 
