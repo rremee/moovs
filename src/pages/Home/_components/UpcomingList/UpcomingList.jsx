@@ -1,7 +1,7 @@
 import {useEffect, useState} from "react";
 import UpcomingCard from "../UpcomingCard/UpcomingCard.jsx";
-import useTMDBService from "../../services/TMDBService.js";
-import ErrorMessage from "../ErrorMessage/ErrorMessage.jsx";
+import useTMDBService from "@/services/TMDBService.js";
+import ErrorMessage from "@/components/ErrorMessage/ErrorMessage.jsx";
 import './upcomingList.scss'
 
 const UPCOMING_COUNT = 5;

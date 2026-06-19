@@ -1,8 +1,8 @@
 import {useEffect, useState, useRef} from "react";
-import useNewsService, {_placeholderImage} from "../../services/NewsService.js";
+import useNewsService, {_placeholderImage} from "@/services/NewsService.js";
 import NewsHomeCard from "../NewsHomeCard/NewsHomeCard.jsx";
 import './newsHome.scss'
-import ErrorMessage from "../ErrorMessage/ErrorMessage.jsx";
+import ErrorMessage from "@/components/ErrorMessage/ErrorMessage.jsx";
 
 const NewsHome = () => {
 

@@ -1,8 +1,7 @@
-import React from 'react';
-import Heading from "../../components/Heading/Heading.jsx";
-import UpcomingList from "../../components/UpcomingList/UpcomingList.jsx";
-import NewsHome from "../../components/NewsHome/NewsHome.jsx";
-import HomeSlider from "../../components/HomeSlider/HomeSlider.jsx";
+import Heading from "@/components/Heading/Heading.jsx";
+import UpcomingList from "./_components/UpcomingList/UpcomingList.jsx";
+import NewsHome from "./_components/NewsHome/NewsHome.jsx";
+import HomeSlider from "./_components/HomeSlider/HomeSlider.jsx";
 import './home.scss';
 
 const Home = () => {

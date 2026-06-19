@@ -1,5 +1,5 @@
 import Skeleton from 'react-loading-skeleton';
-import {truncText} from "../../constants/script.js";
+import {truncText} from "@/constants/script.js";
 import './newsHomeCard.scss'
 
 const NewsHomeCard = ({image, title, url, description, placeholderImage, isLoading}) => {

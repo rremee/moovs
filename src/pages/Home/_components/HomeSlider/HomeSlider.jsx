@@ -1,7 +1,7 @@
 import {useState, useEffect, useCallback, useRef} from 'react';
 import MovieCard from "../MovieCard/MovieCard.jsx";
-import ErrorMessage from "../ErrorMessage/ErrorMessage.jsx";
-import useTMDBService from "../../services/TMDBService.js";
+import ErrorMessage from "@/components/ErrorMessage/ErrorMessage.jsx";
+import useTMDBService from "@/services/TMDBService.js";
 import './homeSlider.scss';
 
 const AUTO_SLIDE = 10000;

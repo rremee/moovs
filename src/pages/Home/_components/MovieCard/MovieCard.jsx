@@ -1,7 +1,7 @@
 import MovieDetail from "../MovieDetail/MovieDetail.jsx";
 import Skeleton from 'react-loading-skeleton';
 import ActorHomeSlider from "../ActorHomeSlider/ActorHomeSlider.jsx";
-import {truncText} from "../../constants/script.js";
+import {truncText} from "@/constants/script.js";
 import './movieCard.scss';
 
 const MovieCard = ({movie, isActive, isLoading}) => {
