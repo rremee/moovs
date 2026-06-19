@@ -1,8 +1,6 @@
+import {Routes, Route} from "react-router-dom";
 import Sidebar from "./components/Sidebar/Sidebar.jsx";
-import Heading from "./components/Heading/Heading.jsx";
-import UpcomingList from "./components/UpcomingList/UpcomingList.jsx";
-import NewsHome from "./components/NewsHome/NewsHome.jsx";
-import HomeSlider from "./components/HomeSlider/HomeSlider.jsx";
+import Home from "./pages/Home/Home.jsx";
 
 function App() {
 
@@ -10,20 +8,10 @@ function App() {
     <div className={'app-main'}>
         <Sidebar/>
         <main className="main-content">
-            <section className={'home-slider'}>
-                <Heading name={'Now Playing'} />
-                <HomeSlider/>
-            </section>
-            <div className="news-wrapper">
-                <aside className={'news'}>
-                    <Heading name={'News'} />
-                    <NewsHome/>
-                </aside>
-            </div>
-            <section className={'upcoming'}>
-                <Heading name={'Upcoming releases'} />
-                <UpcomingList/>
-            </section>
+            <Routes>
+                <Route path="/" element={<Home/>} />
+                <Route path="/movies" element={<Movies/>} />
+            </Routes>
         </main>
     </div>
   )
