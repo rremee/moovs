@@ -3,19 +3,35 @@
 
 .nav-item {
     display: inline-flex;
-    span {
-        font-size: $fs-lg;
-        color: var(--c-icon-nav);
-        background: var(--c-bg-icon-nav);
-        @include flex-center;
-        width: 44px;
-        height: 44px;
-        border-radius: $radius-full;
-    }
-    a {
+    &__link {
         display: flex;
         align-items: center;
         gap: $gutter-xs;
         color: var(--c-white);
+        transition: color .4s ease;
+        span {
+            font-size: $fs-lg;
+            color: var(--c-icon-nav);
+            background: var(--c-bg-icon-nav);
+            @include flex-center;
+            width: 44px;
+            height: 44px;
+            border-radius: $radius-full;
+            transition: transform .4s ease, background .4s ease, color .4s ease;
+            will-change: transform;
+        }
+        &--active {
+            color: var(--c-icon-nav);
+        }
+        @media screen and (min-width: $tablet) {
+            &:hover {
+                color: var(--c-icon-nav);
+                span {
+                    transform: scale(1.1);
+                    background: var(--c-icon-nav);
+                    color: var(--c-white);
+                }
+            }
+        }
     }
 }
