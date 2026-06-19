@@ -1,12 +1,16 @@
+import {NavLink} from 'react-router-dom'
 import "./navItem.scss";
 
-const NavItem = ({name, icon, path, isActive}) => {
+const NavItem = ({name, icon, path}) => {
 	return (
-		<li className={`nav-item ${isActive ? 'nav-item--active' : ''}`}>
-			<a href={path}>
+		<li className={'nav-item'}>
+			<NavLink
+				to={path}
+				className={({ isActive }) => `nav-item__link ${isActive ? 'nav-item__link--active' : ''}`}
+			>
 				<span className={icon}/>
 				{name}
-			</a>
+			</NavLink>
 		</li>
 	);
 };

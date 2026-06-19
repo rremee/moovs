@@ -12,7 +12,6 @@ const NavItems = () => {
 						name={item.name}
 						icon={item.icon}
 						path={item.path}
-						isActive={false}
 					/>
 				))}
 			</ul>
